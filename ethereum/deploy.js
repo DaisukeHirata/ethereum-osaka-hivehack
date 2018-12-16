@@ -1,6 +1,6 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
-const compiledFactory = require('./build/CampaignFactory.json');
+const compiledBanpaku = require('./build/Banpaku.json');
 
 const provider = new HDWalletProvider(
   'call glow acoustic vintage front ring trade assist shuffle mimic volume reject',
@@ -14,9 +14,9 @@ const deploy = async () => {
   console.log('Attempting to deploy from account', accounts[0]);
 
   const result = await new web3.eth.Contract(
-    JSON.parse(compiledFactory.interface)
+    JSON.parse(compiledBanpaku.interface)
   )
-    .deploy({ data: compiledFactory.bytecode })
+    .deploy({ data: compiledBanpaku.bytecode })
     .send({ gas: '1000000', from: accounts[0] });
 
   console.log('Contract deployed to', result.options.address);
